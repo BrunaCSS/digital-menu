@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio Digital - Ki Fome</title>
+    <link rel="stylesheet" href="style.css">  
+</head>
+<body>
+    <header>
+        <h1>Cardápio Digital - Ki Fome</h1>
+    </header>
+    <main class="container">
+        <section class="category">
+            <h2>Hambúrgueres</h2>
+            <div class="grid-container">
+                <article class="item">
+                    <img src="https://static3.depositphotos.com/1000691/109/i/450/depositphotos_1098427-stock-photo-cheeseburger.jpg" alt="Hambúrguer Clássico">
+                    <div class="item-details">
+                        <div class="item-name">Hambúrguer</div>
+                        <div class="item-description">Hambúrguer, queijo, alface, tomate</div>
+                        <div class="item-price">R$ 19,50</div>
+                    </div>
+                    <input type="checkbox" class="select-item" data-name="Hambúrguer Clássico" data-price="19.50">
+                </article>
+                <article class="item">
+                    <img src="https://conteudo.imguol.com.br/c/entretenimento/44/2023/05/03/cheeseburger-1683134270752_v2_4x3.jpg" alt="Cheeseburger">
+                    <div class="item-details">
+                        <div class="item-name">Cheeseburger</div>
+                        <div class="item-description">Hambúrguer, queijo, bacon</div>
+                        <div class="item-price">R$ 25,00</div>
+                    </div>
+                    <input type="checkbox" class="select-item" data-name="Cheeseburger" data-price="25">
+                </article>
+            </div>
+        </section>
+
+        <section class="category">
+            <h2>Salgados</h2>
+            <div class="grid-container">
+                <article class="item">
+                    <img src="https://www.designi.com.br/images/preview/10081886.jpg" alt="Coxinha">
+                    <div class="item-details">
+                        <div class="item-name">Coxinha</div>
+                        <div class="item-description">Coxinha de frango</div>
+                        <div class="item-price">R$ 6,50</div>
+                    </div>
+                    <input type="checkbox" class="select-item" data-name="Coxinha" data-price="6.50">
+                </article>
+                <article class="item">
+                    <img src="https://t4.ftcdn.net/jpg/05/84/50/61/360_F_584506139_vk285BaPTi8KrEb2TxBVu5FheGortFyw.jpg" alt="Pastel">
+                    <div class="item-details">
+                        <div class="item-name">Pastel</div>
+                        <div class="item-description">Pastel de carne</div>
+                        <div class="item-price">R$ 6,50</div>
+                    </div>
+                    <input type="checkbox" class="select-item" data-name="Pastel" data-price="6.50">
+                </article>
+            </div>
+        </section>
+
+        <section class="category">
+            <h2>Bebidas</h2>
+            <div class="grid-container">
+                <article class="item">
+                    <img src="https://st.depositphotos.com/1024749/3996/i/450/depositphotos_39969913-stock-photo-aytos-bulgaria-februari-01-2014.jpg" alt="Refrigerante">
+                    <div class="item-details">
+                        <div class="item-name">Refrigerante</div>
+                        <div class="item-description">Coca-Cola, Guaraná</div>
+                        <div class="item-price">R$ 4,50</div>
+                    </div>
+                    <input type="checkbox" class="select-item" data-name="Refrigerante" data-price="4.50">
+                </article>
+                <article class="item">
+                    <img src="https://valtra.coopercitrus.com.br/wp-content/uploads/sites/58/2020/07/shutterstock_68566873.jpg" alt="Suco">
+                    <div class="item-details">
+                        <div class="item-name">Suco</div>
+                        <div class="item-description">Laranja, Maracujá</div>
+                        <div class="item-price">R$ 6,00</div>
+                    </div>
+                    <input type="checkbox" class="select-item" data-name="Suco" data-price="6">
+                </article>
+            </div>
+        </section>
+
+        <section class="cart">
+            <h2>Carrinho de Compras</h2>
+            <div id="cart-items"></div>
+            <div class="cart-summary">Total: R$ <span id="cart-total">0.00</span></div>
+            <div class="actions">
+                <button onclick="addItem()">Adicionar Mais Itens</button>
+                <button onclick="checkout()">Finalizar Pedido</button>
+            </div>
+        </section>
+
+        <section id="checkout-section" style="display: none;">
+            <h2>Finalização do Pedido</h2>
+            <form id="checkout-form">
+                <label for="name">Nome Completo:</label>
+                <input type="text" id="name" name="name" required>
+                <br>
+                <label for="address">Endereço:</label>
+                <input type="text" id="address" name="address" required>
+                <br>
+                <label for="payment">Opção de Pagamento:</label>
+                <select id="payment" name="payment" required>
+                    <option value="debit">Cartão de Débito</option>
+                    <option value="credit">Cartão de Crédito</option>
+                    <option value="pix">Pix</option>
+                </select>
+                <br>
+                <div class="actions">
+                    <button type="button" onclick="confirmOrder()">Confirmar Pedido</button>
+                    <button type="button" onclick="cancelOrder()">Cancelar</button>
+                </div>
+            </form>
+            <div id="order-summary" style="display: none;">
+                <h2>Resumo do Pedido</h2>
+                <div id="summary-details"></div>
+                <div class="actions">
+                    <button type="button" onclick="finalizeOrder()">Confirmar</button>
+                    <button type="button" onclick="editOrder()">Editar Pedido</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p> ©  2024 Ki Fome</p>
+    </footer>
+    <script src="script.js"></script>    
+</body>
+</html>
